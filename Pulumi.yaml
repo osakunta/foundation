@@ -1,0 +1,4 @@
+name: foundation
+runtime:
+  name: bun
+description: Foundation infrastructure for Google Cloud organization bootstrapping

@@ -1,0 +1,5 @@
+config:
+  gcp:project: osakunta-foundation-prod
+  gcp:region: europe-north1
+  foundation:organizationId: "" # Set your organization ID here
+  foundation:billingAccount: "" # Set your billing account ID here
