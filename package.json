@@ -1,15 +1,14 @@
 {
-  "name": "osakunta-foundation",
+  "name": "satakuntatalo-foundation",
   "version": "1.0.0",
   "description": "Foundation infrastructure for Satakuntalainen Osakunta Google Cloud",
   "main": "index.ts",
   "scripts": {
     "dev": "pulumi preview",
     "deploy": "pulumi up",
-    "destroy": "pulumi destroy",
+    "destroy": "pulumi destroy"
   },
   "dependencies": {
-    "@pulumi/pulumi": "^3.0.0",
     "@pulumi/gcp": "^7.0.0"
   },
   "devDependencies": {

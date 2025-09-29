@@ -1,4 +1,6 @@
-name: foundation
+name: satakuntatalo-foundation
 runtime:
-  name: bun
+  name: nodejs
+  options:
+    packagemanager: bun
 description: Foundation infrastructure for Google Cloud organization bootstrapping
