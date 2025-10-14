@@ -58,6 +58,12 @@ resource "google_folder_iam_member" "tfc_sa_osakunta_folder_member" {
   member = "serviceAccount:${google_service_account.tfc_service_account.email}"
 }
 
+resource "google_billing_account_iam_member" "tfc_sa_billing_account_member" {
+  billing_account_id = var.billing_account_id
+  role               = "roles/billing.user"
+  member             = "serviceAccount:${google_service_account.tfc_service_account.email}"
+}
+
 # projects
 
 /* resource "google_project" "osakunta-website" {
