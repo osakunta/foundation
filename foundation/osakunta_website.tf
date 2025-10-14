@@ -11,6 +11,7 @@ resource "google_project" "osakunta_website_prod" {
   }
 }
 
+
 resource "google_project_service" "osakunta_website_prod_services" {
   project = google_project.osakunta_website_prod.project_id
 
@@ -21,15 +22,7 @@ resource "google_project_service" "osakunta_website_prod_services" {
   service = each.key
 }
 
-moved {
-  from = google_project.osakunta-website-prod
-  to   = google_project.osakunta_website_prod
-}
 
-moved {
-  from = google_project_service.osakunta-website-prod-services
-  to   = google_project_service.osakunta_website_prod_services
-}
 
 # wordpress cloud run service
 # resource "google_cloud_run_v2_service" "osakunta-website-wordpress" {
