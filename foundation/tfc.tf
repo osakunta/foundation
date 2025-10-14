@@ -49,8 +49,12 @@ resource "google_project_iam_member" "tfc_project_member" {
 }
 
 resource "google_folder_iam_member" "tfc_sa_osakunta_folder_member" {
-  folder = google_folder.osakunta-folder.id
-  role   = "roles/resourcemanager.projectCreator"
+  folder = google_folder.osakunta_folder.id
+  for_each = toset([
+    "roles/resourcemanager.projectCreator",
+    "roles/resourcemanager.folderViewer"
+  ])
+  role   = each.key
   member = "serviceAccount:${google_service_account.tfc_service_account.email}"
 }
 
