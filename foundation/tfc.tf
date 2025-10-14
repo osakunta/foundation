@@ -48,13 +48,11 @@ resource "google_project_iam_member" "tfc_project_member" {
   member  = "serviceAccount:${google_service_account.tfc_service_account.email}"
 }
 
-
-# folders
-/* 
-resource "google_folder" "osakunta-folder" {
-  display_name = "osakunta"
-  parent       = "organizations/${data.google_project.foundation_project.org_id}"
-} */
+resource "google_folder_iam_member" "tfc_sa_osakunta_folder_member" {
+  folder = google_folder.osakunta-folder.id
+  role   = "roles/resourcemanager.projectCreator"
+  member = "serviceAccount:${google_service_account.tfc_service_account.email}"
+}
 
 # projects
 
