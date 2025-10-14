@@ -9,7 +9,7 @@ resource "google_project" "osakunta_website_prod" {
     team        = "osakunta"
     environment = "prod"
   }
-  depends_on = [google_project_service.service]
+  depends_on = [google_project_service.services]
 }
 
 
