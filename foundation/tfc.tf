@@ -52,7 +52,8 @@ resource "google_folder_iam_member" "tfc_sa_osakunta_folder_member" {
   folder = google_folder.osakunta_folder.id
   for_each = toset([
     "roles/resourcemanager.projectCreator",
-    "roles/resourcemanager.folderViewer"
+    "roles/resourcemanager.folderViewer",
+    "roles/iam.securityAuditor"
   ])
   role   = each.key
   member = "serviceAccount:${google_service_account.tfc_service_account.email}"
