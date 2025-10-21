@@ -20,15 +20,9 @@ resource "google_iam_workload_identity_pool_provider" "tfc_provider" {
     "attribute.terraform_full_workspace"    = "assertion.terraform_full_workspace",
   }
   oidc {
-    issuer_uri = "https://${var.tfc_hostname}"
-    # The default audience format used by TFC is of the form:
-    # //iam.googleapis.com/projects/{project number}/locations/global/workloadIdentityPools/{pool ID}/providers/{provider ID}
-    # which matches with the default accepted audience format on GCP.
-    #
-    # Uncomment the line below if you are specifying a custom value for the audience instead of using the default audience.
-    # allowed_audiences = [var.tfc_gcp_audience]
+    issuer_uri = "https://app.terraform.io"
   }
-  attribute_condition = "assertion.sub.startsWith(\"organization:${var.tfc_organization_name}:project:${var.tfc_project_name}:workspace:${var.tfc_workspace_name}\")"
+  attribute_condition = "attribute.terraform_organization_id == \"${var.tfc_organization_id}\" && attribute.terraform_project_id == \"${var.tfc_project_id}\""
 }
 
 resource "google_service_account" "tfc_service_account" {

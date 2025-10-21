@@ -9,22 +9,22 @@ variable "billing_account_id" {
   description = "The GCP billing account ID."
 }
 
-variable "tfc_hostname" {
+variable "tfc_organization_id" {
   type        = string
-  description = "The hostname for your Terraform Cloud instance (e.g. app.terraform.io)."
+  description = "The ID of your Terraform Cloud organization."
 }
 
-variable "tfc_organization_name" {
+variable "tfc_project_id" {
   type        = string
-  description = "The name of your Terraform Cloud organization."
+  description = "The ID of your Terraform Cloud project."
 }
 
-variable "tfc_project_name" {
+variable "tfc_foundation_workspace_id" {
   type        = string
-  description = "The name of your Terraform Cloud project."
+  description = "The ID of the foundation workspace."
 }
 
-variable "tfc_workspace_name" {
+variable "tfc_osakunta_website_workspace_id" {
   type        = string
-  description = "The name of your Terraform Cloud workspace."
+  description = "The ID of the osakunta-website workspace."
 }
