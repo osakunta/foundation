@@ -23,7 +23,22 @@ resource "google_project_service" "osakunta_website_prod_services" {
   service = each.key
 }
 
+// osakunta website prod tfc service account
 
+resource "google_service_account" "osakunta_website_prod_cicd_sa" {
+  account_id   = "osakunta-website-prod-cicd-sa"
+  display_name = "Osakunta Website Prod CI/CD Service Account"
+}
+
+resource "google_service_account_iam_member" "osakunta_website_prod_cicd_sa_member" {
+  service_account_id = google_service_account.osakunta_website_prod_cicd_sa.name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.tfc_pool.name}/attribute.workspace_id/ws-gNGfFerRSizkFewd"
+}
+
+output "osakunta_website_prod_project_id" {
+  value = google_project.osakunta_website_prod.project_id
+}
 
 # wordpress cloud run service
 # resource "google_cloud_run_v2_service" "osakunta-website-wordpress" {

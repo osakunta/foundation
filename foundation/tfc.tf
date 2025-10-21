@@ -39,7 +39,7 @@ resource "google_service_account" "tfc_service_account" {
 resource "google_service_account_iam_member" "tfc_service_account_member" {
   service_account_id = google_service_account.tfc_service_account.name
   role               = "roles/iam.workloadIdentityUser"
-  member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.tfc_pool.name}/*"
+  member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.tfc_pool.name}/attribute.workspace_id/ws-r6z2YFrVrdr2PUnj"
 }
 
 resource "google_project_iam_member" "tfc_project_member" {
